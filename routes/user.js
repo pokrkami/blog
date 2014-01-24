@@ -3,6 +3,6 @@
  * GET users listing.
  */
 
-exports.list = function(req, res){
+exports.init = function(req, res){
   res.send("respond with a resource");
 };

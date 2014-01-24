@@ -1,11 +1,12 @@
 //ルーティング設定
 
 exports.init = function(app){
-    var routes = require('../../routes');
-    var user = require('../../routes/user');
+    var controller = require('../controller');
+    var userCotroller = require('../controller/userList');
     //ルーター
-    app.get('/', routes.index);
-    app.get('/users', user.list);
+    app.get('/', controller.index);
+    //console.log(controller.index);
+    app.get('/users', userCotroller.userList);
 
 };
 
