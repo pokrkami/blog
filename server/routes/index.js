@@ -1,12 +1,14 @@
 //ルーティング設定
 
 exports.init = function(app){
-    var controller = require('../controller');
-    var userCotroller = require('../controller/userList');
+    var blogContlPath = require('../controller/blog');
+
+
     //ルーター
-    app.get('/', controller.index);
-    //console.log(controller.index);
-    app.get('/users', userCotroller.userList);
+    app.get('/', blogContlPath.blogController.top);
+    app.post('/json/postBlog', blogContlPath.blogController.postBlog);
+
+
 
 };
 
