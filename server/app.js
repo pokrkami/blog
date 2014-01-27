@@ -8,6 +8,11 @@ var express = require('express');
 //var user = require('./../routes/user');
 var http = require('http');
 var path = require('path');
+var util = require('util');
+
+debug = function(target){
+    return util.inspect(target);
+};
 
 var app = express();
 
@@ -29,8 +34,14 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+
+
+
+//routing
 var router = require('./routes/index');
 router.init(app);
+
+
 
 //初期設定
 http.createServer(app).listen(app.get('port'), function(){
