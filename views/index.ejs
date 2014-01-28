@@ -4,18 +4,24 @@
     <title>ブログTop</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <style>
+
+        body{
+            max-width:940px;
+            margin: 0 auto;
+        }
+
+        .wrapper{
+        }
+
+
         .list {
             width: 200px;
             margin: 0 auto;
         }
 
-        /*helper*/
-        .f-l{
-            float: left;
-        }
-
-        .f-r{
-            float: right;
+        /*main*/
+        .content{
+            width:580px;
         }
 
         .article1{
@@ -32,42 +38,50 @@
             color: #a62;
         }
 
+        /*sub*/
+
+        .content-sub{
+            width:280px;
+        }
+
 
     </style>
 </head>
 <body>
-    <header>
-        <h1>俺俺ブログ</h1>
-        <ul>
-            <li>home</li>
-            <li>about</li>
-        </ul>
-    </header>
-    <div>
-        <section class="f-l">
+    <div class="wrapper">
+        <header>
+            <h1>俺俺ブログ</h1>
             <ul>
-                <% for(var i = 0,len = articles.length; i < len; i++ ){ %>
-                <li class="article1 list">
-                    <h2 class="article1-head"><%= articles[i].title %></h2>
-
-                    <p class="article1-content"><%= articles[i].content %></p>
-                </li>
-
-                <% } %>
-
+                <li>home</li>
+                <li>about</li>
             </ul>
+        </header>
+        <div class="clear-fix">
+            <section class="f-l content">
+                <ul class="articles">
+                    <% for(var i = 0,len = articles.length; i < len; i++ ){ %>
+                    <li class="article1 list">
+                        <h2 class="article1-head"><%= articles[i].title %></h2>
 
-            <h2 style="width:200px;margin:0 auto;">コンテンツ追加しちゃってー</h2>
+                        <p class="article1-content"><%= articles[i].content %></p>
+                    </li>
 
-            <form style="width:200px;margin:0 auto;" action="/json/postBlog" method="post">
-                <label>タイトル<input type="text" name="title" value=""/></label>
-                <label>内容<textarea rows="3" name="content"></textarea></label>
-                <input type="submit" name="submit" value="投稿しちゃう"/>
-            </form>
-        </section>
-        <aside class="f-r">
+                    <% } %>
 
-        </aside>
+                </ul>
+
+                <h2>コンテンツ追加しちゃってー</h2>
+
+                <form action="/json/postBlog" method="post">
+                    <label>タイトル<input type="text" name="title" value=""/></label>
+                    <label>内容<textarea rows="3" name="content"></textarea></label>
+                    <input type="submit" name="submit" value="投稿しちゃう"/>
+                </form>
+            </section>
+            <aside class="f-r content-sub">
+
+            </aside>
+        </div>
     </div>
 </body>
 </html>
