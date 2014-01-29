@@ -11,7 +11,7 @@ exports.blogController = {
 
     'top' : function(req, res){
 
-            var queryStr = 'select * from blog limit=10';
+            var queryStr = 'select * from blog';
             connection.query(queryStr, [ new Date() ], function(err, rows) {
                 if(err) {
                     console.log(err);
