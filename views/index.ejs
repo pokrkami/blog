@@ -15,13 +15,12 @@
 
 
         .list {
-            width: 200px;
-            margin: 0 auto;
         }
 
         /*main*/
         .content{
             width:580px;
+            margin-right: 40px;
         }
 
         .article1{
@@ -36,13 +35,66 @@
         .article1 .article1-content.{
             font-size:18px;
             color: #a62;
+            line-height: 1.7;
         }
 
         /*sub*/
 
         .content-sub{
             width:280px;
+            margin-left: 40px;
         }
+
+
+        /*menu*/
+        .menu{
+
+        }
+
+        .menu-tab{
+            width:150px;
+            height: 70px;
+            padding-top: 50px;
+            margin-left: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .menu-tab:first-child{
+            margin-left: 0;
+        }
+
+
+        .cl-strong-mid{
+            color:#a62;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+
+        .cl-strong-base{
+            color:#a62;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cl-strong-lar{
+            color:#a62;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+
+
+
+
+
+        /*メモ*/
+        /*
+            コンテンツ : 940px;
+            メイン    : 580px;
+            サイド    : 280px
+        */
 
 
     </style>
@@ -51,21 +103,21 @@
     <div class="wrapper">
         <header>
             <h1>俺俺ブログ</h1>
-            <ul>
-                <li>home</li>
-                <li>about</li>
-            </ul>
+            <nav class="menu">
+                <ul class="clear-fix">
+                    <li class="f-l menu-tab cl-strong-mid tx-c">home</li>
+                    <li class="f-l menu-tab cl-strong-mid tx-c">about</li>
+                </ul>
+            </nav>
         </header>
         <div class="clear-fix">
             <section class="f-l content">
                 <ul class="articles">
                     <% for(var i = 0,len = articles.length; i < len; i++ ){ %>
-                    <li class="article1 list">
-                        <h2 class="article1-head"><%= articles[i].title %></h2>
-
-                        <p class="article1-content"><%= articles[i].content %></p>
-                    </li>
-
+                        <li class="article1 list mb20">
+                            <h2 class="article1-head mb20 cl-strong-base"><%= articles[i].title %></h2>
+                            <p class="article1-content"><%= articles[i].content %></p>
+                        </li>
                     <% } %>
 
                 </ul>
