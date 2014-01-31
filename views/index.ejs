@@ -8,6 +8,7 @@
         body{
             max-width:940px;
             margin: 0 auto;
+            color:#444;
         }
 
         .wrapper{
@@ -32,9 +33,8 @@
             color: #a62;
         }
 
-        .article1 .article1-content.{
+        .article1 .article1-content{
             font-size:18px;
-            color: #a62;
             line-height: 1.7;
         }
 
@@ -116,6 +116,16 @@
                     <% for(var i = 0,len = articles.length; i < len; i++ ){ %>
                         <li class="article1 list mb20">
                             <h2 class="article1-head mb20 cl-strong-base"><%= articles[i].title %></h2>
+                            <ul class="clear-fix">
+                                <li class="f-l">
+                                    <h3>date</h3>
+                                    <p></p>
+                                </li>
+                                <li class="f-l">
+                                    <h3>tags</h3>
+                                    <p></p>
+                                </li>
+                            </ul>
                             <p class="article1-content"><%= articles[i].content %></p>
                         </li>
                     <% } %>
