@@ -27,7 +27,11 @@ exports.blogController = {
     },
     'postBlog' : function(req , res){
         var body = req.body;
-        insertBlogQuery = 'insert into blog (title, content) values("' + body.title + '","' + body.content + '")';
+        var DateObj = new Date();
+        var datetimeAry = [DateObj.getFullYear() , DateObj.getMonth() + 1, DateObj.getDate() , DateObj.getHours() , DateObj.getMinutes() , DateObj.getSeconds()];
+        var dateTime = datetimeAry.join('-');
+        console.log(debug(dateTime));
+        insertBlogQuery = 'insert into blog (title, content , create_time ,update_time) values("' + body.title + '","' + body.content + '")';
         connection.query(insertBlogQuery , function(err, rows){
             if(err) {
                 console.log(err);
