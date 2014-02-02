@@ -123,7 +123,9 @@
                                 </li>
                                 <li class="f-l">
                                     <h3>tags</h3>
-                                    <p></p>
+                                    <% if(articles[i].tags != undefined){ %>
+                                        <p><%= articles[i].tags %></p>
+                                    <% } %>
                                 </li>
                             </ul>
                             <p class="article1-content"><%= articles[i].content %></p>
@@ -137,6 +139,7 @@
                 <form action="/json/postBlog" method="post">
                     <label>タイトル<input type="text" name="title" value=""/></label>
                     <label>内容<textarea rows="3" name="content"></textarea></label>
+                    <label>タグ<textarea rows="3" name="tags"></textarea></label>
                     <input type="submit" name="submit" value="投稿しちゃう"/>
                 </form>
             </section>
