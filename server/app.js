@@ -9,6 +9,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var util = require('util');
+var mysqlSession = require('connect-mysql-session')(express);
 
 debug = function(target){
     return util.inspect(target);
@@ -18,6 +19,7 @@ var app = express();
 
 // all environments
 
+
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
@@ -26,6 +28,16 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+
+app.use(express.cookieParser());
+app.use(express.session({
+    store: new mysqlSession("blog", "root", "", {
+
+    }),
+    secret: "keyboard cat"
+}));
+
+
 app.use(app.router);
 app.use(express.static(path.join(__dirname, '../public')));
 
