@@ -6,7 +6,14 @@ exports.init = function(app){
 
     //ルーター
     app.get('/', blogContlPath.blogController.top);
+    app.get('/login', blogContlPath.blogController.login);
+    app.get('/mypage', blogContlPath.blogController.myPage);
+    app.get('/about', blogContlPath.blogController.about);
+
+    //API
     app.post('/json/postBlog', blogContlPath.blogController.postBlog);
+    app.post('/api/login', blogContlPath.blogController.doLogin);
+
 
 
 
