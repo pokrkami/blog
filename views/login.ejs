@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ログイン</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<div class="line-b">
+    <header>
+        <h1 class="wf-osw fnw-b blog_title">kemulog</h1>
+        <nav class="menu">
+            <ul class="clear-fix">
+                <li class="f-l menu-tab cl-a-mid"><a class="disp-bl" href="/">home</a></li>
+                <li class="f-l menu-tab cl-a-mid"><a class="disp-bl" href="/about">about</a></li>
+                <li class="f-r menu-tab menu-tab-login cl-b-mid"><a class="disp-bl" href="/login">ログイン</a></li>
+            </ul>
+        </nav>
+    </header>
+</div>
+<form action="/api/login" method="post">
+            <label>ID<input type="text" name="id" value=""/></label>
+            <label>パスワード<input type="text" name="pass"></label>
+            <input type="submit" name="submit" value="ログイン"/>
+        </form>
+    </body>
+</html>
