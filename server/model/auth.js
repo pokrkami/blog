@@ -27,7 +27,7 @@ auth = {
 
         var dateTime = helper.makeNowDateTime();
 
-        var checkUserQuery = 'select * from user where user_name ="' + body.id + '"';
+        var checkUserQuery = 'select * from user where user_name ="' + connection.escape(body.id) + '"';
         connection.query(checkUserQuery , function(err, rows){
             if(err) {
                 console.log(err);
