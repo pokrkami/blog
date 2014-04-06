@@ -29,9 +29,11 @@ auth = {
 
         var checkUserQuery = 'select * from user where user_name ="' + body.id + '"';
         connection.query(checkUserQuery , function(err, rows){
+
             if(err) {
                 console.log(err);
             } else {
+                console.log(rows[0]);
                 if(body.pass === rows[0].password){
                   req.session.flg = true;
                   callback();
