@@ -26,13 +26,14 @@ article = {
      */
     getAllArticle : function(req , res , callback){
         var obj = {};
-        var queryStr = 'select * from blog ';
+        var queryStr = 'select * from blog ORDER BY update_time DESC';
+        //記事全取得
         connection.query(queryStr, [ new Date() ], function(err, rows) {
             if(err) {
                 console.log(err);
             } else {
                 var tagQuery = 'select tags , blog_id from tags';
-
+                //タグ取得
                 connection.query(tagQuery, [ new Date() ], function(err, tags) {
                     if(err) {
                         console.log(err);
