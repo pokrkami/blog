@@ -32,6 +32,7 @@ article = {
             if(err) {
                 console.log(err);
             } else {
+
                 var tagQuery = 'select tags , blog_id from tags';
                 //タグ取得
                 connection.query(tagQuery, [ new Date() ], function(err, tags) {
@@ -48,6 +49,39 @@ article = {
                         }
                     }
                     callback(rows);
+                })
+
+            }
+        });
+    },
+
+    getArticle : function(req , res , callback){
+        var obj = {},
+            blogId = req.params.id;
+        var queryStr = 'select * from blog where id =' + connection.escape(blogId)  + ' limit 1';
+        //記事全取得
+        connection.query(queryStr, [ new Date() ], function(err, article) {
+            if(err) {
+                console.log(err);
+            } else {
+                console.log(article);
+
+                var tagQuery = 'select tags from tags where blog_id =' + connection.escape(blogId);
+                //タグ取得
+                connection.query(tagQuery, [ new Date() ], function(err, tags) {
+                    if(err) {
+                        console.log(err);
+                    }else{
+                        if(tags && tags.length !== 0){
+                            for(var i = 0; i < tags.length; i++ ){
+                                if(article.id === blogId){
+                                    article.tags = tags[i].tags;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    callback(article[0]);
                 })
 
             }

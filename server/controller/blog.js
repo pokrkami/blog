@@ -11,6 +11,7 @@ var auth = require ('../model/auth');
 
 exports.blogController = {
 
+    //top page
     'top' : function(req, res){
 
 
@@ -22,13 +23,39 @@ exports.blogController = {
 
 
     },
-    'postBlog' : function(req , res){
 
-        article.post(req , res ,function(){
-            res.redirect('/');
-        });
+
+    'myPage'  : function(req , res){
+
+        if(req.session.flg){
+            res.render('mypage');
+        } else {
+            res.redirect('/login');
+        }
+
+
+
     },
 
+    //article detail
+    'articleDetail' : function(req, res){
+
+        if(isNaN(req.params.id * 1) ){
+            return false;
+        }
+
+        article.getArticle(req , res , function(data){
+            res.render('article_detail', { article: data });
+        });
+
+    },
+
+    //about page
+    'about' : function(req , res){
+        res.render('about');
+    },
+
+    // login page
     'login'  : function(req , res){
         if(req.session.flg){
             res.redirect('/mypage');
@@ -49,22 +76,15 @@ exports.blogController = {
     },
 
 
-    'myPage'  : function(req , res){
+    //----API----
 
-        if(req.session.flg){
-            res.render('mypage');
-        } else {
-            res.redirect('/login');
-        }
+    //post article
+    'postBlog' : function(req , res){
 
-
-
-    },
-
-    'about' : function(req , res){
-        res.render('about');
+        article.post(req , res ,function(){
+            res.redirect('/');
+        });
     }
-
 
 
 };

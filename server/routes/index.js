@@ -9,6 +9,8 @@ exports.init = function(app){
     app.get('/login', blogContlPath.blogController.login);
     app.get('/mypage', blogContlPath.blogController.myPage);
     app.get('/about', blogContlPath.blogController.about);
+    app.get('/article/:id', blogContlPath.blogController.articleDetail);
+
 
     //API
     app.post('/json/postBlog', blogContlPath.blogController.postBlog);
