@@ -20,31 +20,42 @@
         </div>
         <div class="clear-fix wrapper">
             <section class="f-l content">
-                <ul class="articles">
-                    <% for(var i = 0,len = articles.length; i < len; i++ ){ %>
-                        <li class="article1 list mt10 mb40">
-                            <h2 class="article1-head mb20 cl-a-base"><%= articles[i].title %></h2>
-                            <ul class="clear-fix line-t line-b lh30">
-                                <% if(articles[i].postTime != undefined){ %>
-                                    <li class="f-l">
-                                        <p class="cl-b-sm"><i class="fa fa-clock-o mr3 cl-b-vsm"></i><%= articles[i].postTime%></p>
-                                    </li>
-                                <% } %>
-                                <% if(articles[i].tags != undefined){ %>
-                                    <li class="f-l">
-                                        <p class="cl-a-sm"><i class="fa fa-tags mr3 cl-a-vsm"></i><%= articles[i].tags %></p>
-                                    </li>
-                                <% } %>
-                            </ul>
-                            <p class="article1-content mt10"><%= articles[i].content %></p>
-                        </li>
-                    <% } %>
+                <% if (articles && articles.length !== 0) { %>
+                    <ul class="articles">
+                        <% for(var i = 0,len = articles.length; i < len; i++ ){ %>
+                            <li class="article1 list mt10 mb40">
+                                <h2 class="article1-head mb20 cl-a-base"><%= articles[i].title %></h2>
+                                <ul class="clear-fix line-t line-b lh30">
+                                    <% if(articles[i].postTime != undefined){ %>
+                                        <li class="f-l">
+                                            <p class="cl-b-sm"><i class="fa fa-clock-o mr3 cl-b-vsm"></i><%= articles[i].postTime%></p>
+                                        </li>
+                                    <% } %>
+                                    <% if(articles[i].tags != undefined){ %>
+                                        <li class="f-l">
+                                            <p class="cl-a-sm"><i class="fa fa-tags mr3 cl-a-vsm"></i><%= articles[i].tags %></p>
+                                        </li>
+                                    <% } %>
+                                </ul>
+                                <p class="article1-content mt10"><%= articles[i].content %></p>
+                            </li>
+                        <% } %>
 
-                </ul>
+                    </ul>
+                <% } %>
 
             </section>
             <aside class="f-r content-sub">
-
+                <section class="recent-article">
+                    <h2 class="mt10 line-b">最近の投稿</h2>
+                    <% if (articles && articles.length !== 0) { %>
+                        <ul class="mt10">
+                            <% for(var i = 0,len = articles.length; i < len; i++ ){ %>
+                                <li class="mb10 cl-a-sm"><a href="/article/<%= articles[i].id %>"><%= articles[i].title %></a></li>
+                            <% } %>
+                        </ul>
+                    <% } %>
+                </section>
             </aside>
         </div>
     </body>

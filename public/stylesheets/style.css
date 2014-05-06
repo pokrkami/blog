@@ -1259,9 +1259,10 @@ header{
 
 /*main*/
 .content {
-  width: 580px;
+  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  width: 650px;
   padding-top: 40px;
-  margin-right: 40px;
   border-right: 1px solid #e4e1db;
 }
 
@@ -1282,8 +1283,13 @@ header{
 /*sub*/
 
 .content-sub {
-  width: 280px;
+  width: 249px;
   margin-left: 40px;
+}
+
+.content-sub .recent-article > h2{
+  font-size: 18px;
+  font-weight: bold;
 }
 
 /*menu*/
