@@ -1276,6 +1276,7 @@ header{
 }
 
 .article1 .article1-content {
+  padding-left: 10px;
   font-size: 16px;
   line-height: 1.7;
 }
